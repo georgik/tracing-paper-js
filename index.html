@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/editor.css" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="js/tracing-paper-app.js"></script>
+    <title>Tracing paper tool</title>
+</head>
+<body>
+    <h1>Tracing paper tool</h1>
+    <div>
+        This tool can help you to determine coordinates of items on displayed image.
+        You can use data from Record mode as input for JavaScript methods.
+        More information at: <a href="https://github.com/georgik/tracing-paper-js">Github</a>.
+    </div>
+    <div ng-controller="TracingController">
+        <div>
+            Image: <input id="imageUrlInput" type="text" ng-model="imageUrl" />
+        </div>
+
+        <div id="imageContainer">
+            <img id="baseImage" src="{{imageUrl}}" ng-click="onImageClick($event)"/>
+            <img id="crossair" src="img/crosshair.png" ng-style="crosshairStyle"/>
+        </div>
+        <div>
+            Origin coordinates: <input type="text" ng-model="originX" />, <input type="text" ng-model="originY" />
+            <input type="button" value="Set" ng-click="originButtonClick()" />
+            <input type="button" value="Reset" ng-click="originResetClick()" />
+        </div>
+        <div>
+            Selected coordinates: {{lastX}}, {{lastY}}
+        </div>
+        <div>
+            <h3>Code managament</h3>
+            <input id="recordMode" type="checkbox" ng-model="isRecordMode" />
+            <label for="recordMode">Record mode</label>
+            <ul>
+                <li ng-repeat="item in stack">{ x: {{item.x}}, y: {{item.y}} },</li>
+            </ul>
+
+
+        </div>
+
+    </div>
+</body>
+</html>

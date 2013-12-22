@@ -1,0 +1,28 @@
+#imageContainer {
+    border: 5px dotted gray;
+    position: relative;
+}
+
+#baseImage {
+    border: 0;
+}
+
+#crosshair {
+    position: absolute;
+}
+
+#imageUrlInput {
+    width: 90%;
+}
+
+body {
+    padding: 5px;
+}
+ul
+{
+    list-style-type: none;
+}
+
+label {
+    display: inline;
+}
