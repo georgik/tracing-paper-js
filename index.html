@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/editor.css?v=1.1" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
+    <script src="js/angular-local-storage.js"></script>
     <script src="js/tracing-paper-app.js?v=1.2"></script>
     <title>Tracing paper tool</title>
 </head>
@@ -15,11 +16,11 @@
         This tool can help you to determine coordinates of items on displayed image.
         You can use data from Record mode as input for JavaScript methods.
         More information at: <a href="https://github.com/georgik/tracing-paper-js">Github</a>.
-        Version: 1.1
+        Version: 1.2
     </div>
-    <div ng-controller="TracingController">
+    <div ng-controller="TracingController" ng-init="init()">
         <div>
-            Image: <input id="imageUrlInput" type="text" ng-model="imageUrl" />
+            Image: <input id="imageUrlInput" type="text" ng-model="imageUrl" ng-change="imageUrlChange()"/>
         </div>
 
         <div id="imageContainer">

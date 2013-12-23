@@ -1,5 +1,5 @@
-angular.module('app', [])
-    .controller('TracingController', function($scope, $locale) {
+angular.module('app', ['LocalStorageModule'])
+    .controller('TracingController', function($scope, $locale, localStorageService) {
         $scope.imageUrl = "http://georgik.sinusgear.com/wp-content/uploads/y-soft-quest.jpg";
 
         $scope.originX = 0;
@@ -26,6 +26,10 @@ angular.module('app', [])
             $scope.originY = y;
 
             $scope.crosshairStyle = {position:"absolute", left: x + "px", top: y + "px"};
+        };
+
+        $scope.imageUrlChange = function() {
+            $scope.storeConfiguration();
         };
 
         $scope.onImageClick = function(event) {
@@ -90,11 +94,41 @@ angular.module('app', [])
         $scope.addNewAttribute = function() {
             $scope.pointAttributes.push($scope.newAttributeName);
             $scope.selectedAttributes[$scope.newAttributeName] = "";
+            $scope.storeConfiguration();
         };
 
         $scope.removeAttribute = function(pointAttribute, itemIndex) {
             $scope.pointAttributes.splice(itemIndex, 1);
             delete $scope.selectedAttributes[pointAttribute];
-        }
+            $scope.storeConfiguration();
+        };
+
+        $scope.storeConfiguration = function() {
+            if (!localStorageService.isSupported) {
+                return;
+            }
+
+            localStorageService.add('pointAttributes',$scope.pointAttributes);
+            localStorageService.add('imageUrl',$scope.imageUrl);
+        };
+
+        $scope.init = function() {
+            if (!localStorageService.isSupported) {
+                return;
+            }
+
+            var value = localStorageService.get('pointAttributes');
+
+            // store defaults
+            if (!value) {
+                $scope.storeConfiguration();
+            } else {
+                $scope.pointAttributes = localStorageService.get('pointAttributes');
+                var localImageUrl = localStorageService.get('imageUrl');
+                if (localImageUrl) {
+                    $scope.imageUrl = localImageUrl;
+                }
+            }
+        };
     }
 );
