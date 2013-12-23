@@ -10,10 +10,13 @@ angular.module('app', [])
 
         $scope.lastX = 0;
         $scope.lastY = 0;
+        $scope.selectedColor = "black";
 
         $scope.crosshairStyle = {position:"absolute", left: 0, top: 0};
 
         $scope.stack = [];
+
+        $scope.colors = ["black", "red", "orange", "yellow", "green", "blue", "indigo", "violet", "white"];
 
         $scope.setOrigin = function(x, y) {
             $scope.originX = x;
@@ -34,7 +37,8 @@ angular.module('app', [])
                 if ($scope.isRecordMode) {
                     var item = {
                         x: $scope.lastX,
-                        y: $scope.lastY
+                        y: $scope.lastY,
+                        color: $scope.selectedColor
                     };
                     $scope.stack.push(item);
                 }
@@ -56,9 +60,25 @@ angular.module('app', [])
         $scope.getStyle = function(item) {
             return {
                 position: "absolute",
-                left: item.x - 2 + $scope.originX + "px",
-                top: item.y - 5 + $scope.originY + "px"
+                left: item.x + $scope.originX + "px",
+                top: item.y - 11 + $scope.originY + "px",
+                color: item.color
             };
+        };
+
+        $scope.getColorStyle = function(item) {
+            return {
+                width: '10px',
+                height: '10px',
+                border: 'solid 1px black',
+                background: item,
+                cursor: 'pointer',
+                float: 'left'
+            }
+        };
+
+        $scope.selectColor = function(color) {
+            $scope.selectedColor = color;
         }
     }
 );

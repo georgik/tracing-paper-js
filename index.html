@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/editor.css?v=1.1" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
-    <script src="js/tracing-paper-app.js?v=1.1"></script>
+    <script src="js/tracing-paper-app.js?v=1.2"></script>
     <title>Tracing paper tool</title>
 </head>
 <body>
@@ -40,6 +40,11 @@
                 <h3>Point managament</h3>
                 <input id="recordMode" type="checkbox" ng-model="isRecordMode" />
                 <label for="recordMode">Record mode</label>
+                <div id="colorPicker">
+                    <div ng-repeat="color in colors" ng-style="getColorStyle(color)"
+                            ng-click="selectColor(color)">&nbsp;</div>
+                </div>
+                <div class="clearfix"></div>
                 <ul>
                     <li ng-repeat="item in stack">
                         {{$index}}. x: {{item.x}}, y: {{item.y}}
