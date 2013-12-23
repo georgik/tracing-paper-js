@@ -3,11 +3,11 @@
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" />
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/editor.css?v=1.1" type="text/css" />
+    <link rel="stylesheet" href="css/editor.css?v=1.3" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular-resource.min.js"></script>
     <script src="js/angular-local-storage.js"></script>
-    <script src="js/tracing-paper-app.js?v=1.2"></script>
+    <script src="js/tracing-paper-app.js?v=1.3"></script>
     <title>Tracing paper tool</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
         This tool can help you to determine coordinates of items on displayed image.
         You can use data from Record mode as input for JavaScript methods.
         More information at: <a href="https://github.com/georgik/tracing-paper-js">Github</a>.
-        Version: 1.2
+        Version: 1.3
     </div>
     <div ng-controller="TracingController" ng-init="init()">
         <div>
@@ -27,6 +27,8 @@
             <img id="baseImage" src="{{imageUrl}}" ng-click="onImageClick($event)"/>
             <img id="crossair" src="img/crosshair.png" ng-style="crosshairStyle"/>
             <i class="positionMarker fa fa-flag" ng-repeat="item in stack" ng-style="getStyle(item)">{{$index}}</i>
+            <div id="horizontalGuide" ng-style="horizontalGuideStyle"></div>
+            <div id="verticalGuide" ng-style="verticalGuideStyle"></div>
         </div>
         <div>
             Origin coordinates: <input type="text" ng-model="originX" />, <input type="text" ng-model="originY" />

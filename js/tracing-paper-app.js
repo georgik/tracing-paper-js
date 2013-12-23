@@ -26,6 +26,12 @@ angular.module('app', ['LocalStorageModule'])
             $scope.originY = y;
 
             $scope.crosshairStyle = {position:"absolute", left: x + "px", top: y + "px"};
+            $scope.horizontalGuideStyle = { position: "absolute", left:0, top: y + "px",
+                width: "100%", height:"1px", background: "lightgreen"
+            };
+            $scope.verticalGuideStyle = { position: "absolute", left: x + "px", top: 0,
+                width: "1px", height:"100%", background: "lightgreen"
+            };
         };
 
         $scope.imageUrlChange = function() {

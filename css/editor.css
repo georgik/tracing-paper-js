@@ -50,3 +50,21 @@ label {
 .pointer {
     cursor: pointer;
 }
+
+#horizontalGuide {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: lightgreen;
+    top:0;
+    left:0;
+}
+
+#verticalGuide {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: lightgreen;
+    top:0;
+    left:0;
+}
