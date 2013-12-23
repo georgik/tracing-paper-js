@@ -67,6 +67,10 @@ angular.module('app', ['LocalStorageModule'])
             $scope.stack.splice(itemIndex, 1);
         };
 
+        $scope.removeAllPoints = function() {
+            $scope.stack = [];
+        };
+
         $scope.getStyle = function(item) {
             return {
                 position: "absolute",
