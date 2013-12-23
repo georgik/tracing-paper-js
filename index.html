@@ -45,9 +45,24 @@
                             ng-click="selectColor(color)">&nbsp;</div>
                 </div>
                 <div class="clearfix"></div>
+                <div>
+                    <h3>Additional attributes</h3>
+                    <div ng-repeat="pointAttribute in pointAttributes">
+                        {{pointAttribute}}: <input type="text" ng-model="selectedAttributes[pointAttribute]" />
+                        <a ng-click="removeAttribute(pointAttribute, $index)"><i class="pointer fa fa-trash-o"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <input ng-model="newAttributeName" placeholder="New attribute"/>
+                    <input type="button" value="Add" ng-click="addNewAttribute()">
+                </div>
+                <h3>Points</h3>
                 <ul>
                     <li ng-repeat="item in stack">
                         {{$index}}. x: {{item.x}}, y: {{item.y}}
+                        <span ng-repeat="pointAttribute in pointAttributes">
+                            , {{pointAttribute}}: {{item[pointAttribute]}}
+                        </span>
                         <a ng-click="removePoint($index)"><i class="pointer fa fa-trash-o"></i></a>
                     </li>
                 </ul>
@@ -56,7 +71,12 @@
                 <h3>Code management</h3>
                 <div>JavaScript code:</div>
                 <ul>
-                    <li ng-repeat="item in stack">{ x: {{item.x}}, y: {{item.y}} },</li>
+                    <li ng-repeat="item in stack">{ x: {{item.x}}, y: {{item.y}}
+                        <span ng-repeat="pointAttribute in pointAttributes">
+                            , {{pointAttribute}}: "{{item[pointAttribute]}}"
+                        </span>
+                        },
+                    </li>
                 </ul>
 
             </div>
