@@ -47,6 +47,18 @@ angular.module('app', [])
 
         $scope.originResetClick = function() {
             $scope.setOrigin(0,0);
+        };
+
+        $scope.removePoint = function(itemIndex) {
+            $scope.stack.splice(itemIndex, 1);
+        };
+
+        $scope.getStyle = function(item) {
+            return {
+                position: "absolute",
+                left: item.x - 2 + $scope.originX + "px",
+                top: item.y - 5 + $scope.originY + "px"
+            };
         }
     }
 );

@@ -26,3 +26,27 @@ ul
 label {
     display: inline;
 }
+
+#pointManager {
+    width: 48%;
+    border: solid 1px gray;
+    float: left;
+    margin: 2px;
+    padding: 2px;
+}
+
+#codeManager {
+    width: 48%;
+    border: solid 1px gray;
+    float: left;
+    margin: 2px;
+    padding: 2px;
+}
+
+#positionMarker {
+    position: absolute;
+}
+
+.pointer {
+    cursor: pointer;
+}
