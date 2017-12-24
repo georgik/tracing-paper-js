@@ -1,6 +1,6 @@
 angular.module('app', ['LocalStorageModule'])
     .controller('TracingController', function($scope, $locale, localStorageService) {
-        $scope.imageUrl = "http://georgik.sinusgear.com/wp-content/uploads/y-soft-quest.jpg";
+        $scope.imageUrl = "http://georgik.rocks/wp-content/uploads/y-soft-quest.jpg";
 
         $scope.originX = 0;
         $scope.originY = 0;
